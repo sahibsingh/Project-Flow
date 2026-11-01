@@ -22,6 +22,8 @@ The skill has three depth lanes: Quick for one low-risk outcome, Standard for se
 
 ![Project Flow workflow: start or resume, frame the project, research and choose, map search phrases to page titles and copy when relevant, design and deliver, validate, then continue or close with findings.](docs/workflow.svg)
 
+When design work can benefit from Mobbin, follow this route: read Mobbin's best-practices guidance first; go straight to a redesign for one named screen, flow, section, or component; search or compare first only when references are a separate requested step, then carry inspected apps and Mobbin links into the redesign. Split whole-product or clone requests into specific targets. If an explicitly requested Mobbin step is unavailable, report the actual connection or tool error and stop that step instead of substituting web search or memory. General UX work can continue with project evidence and a clearly labeled manual review.
+
 ## Try the demo
 
 A no-build interactive preview is in [docs/index.html](docs/index.html). It lets a visitor choose a project category and depth, then shows the matching work path.
@@ -42,7 +44,7 @@ The demo is static HTML, CSS, and JavaScript. It has no external dependencies an
 
 ## Skills and integrations
 
-The workflow is self-contained. If the agent has relevant local skills, it can route to product/business analysis for metric-backed decisions, Mobbin for a specific screen redesign, Impeccable for frontend design, Humanizer for user-facing prose, Ponytail for minimal code changes, or Scrapling for an authorized, policy-permitted site crawl. Missing integrations use a clearly labeled manual fallback. The repository does not copy or install those skills.
+The workflow is self-contained. If the agent has relevant local skills, it can route to product/business analysis for metric-backed decisions, Mobbin for a specific screen redesign, Impeccable for frontend design, Humanizer for user-facing prose, Ponytail for minimal code changes, or Scrapling for an authorized, policy-permitted site crawl. Use Mobbin only when its capabilities are available and appropriate; this repository documents the routing but does not copy or install those skills. For general UX work, a missing integration can use a clearly labeled manual fallback.
 
 ## Validate this package
 
