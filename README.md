@@ -20,6 +20,44 @@ Invoke `project-flow` or describe the project. The skill summarizes its understa
 
 The skill has three depth lanes: Quick for one low-risk outcome, Standard for several flows or integrations, and High assurance for sensitive, regulated, production, or security-sensitive work. It keeps small tasks short and does not load every reference or integration at once.
 
+## Workflow
+
+~~~mermaid
+flowchart TD
+  A[New or active project] --> B[Understand user, problem, outcome, and current stage]
+  B --> C{New project?}
+  C -->|Yes| D[Choose a primary category and optional secondary]
+  C -->|No| E[Resume current decisions and stage]
+  D --> F[Scale depth by scope, dependencies, and risk]
+  E --> F
+  F --> G[Load only relevant skills and tools]
+  G --> H[Research current trends when they could change a decision]
+  H --> I[Compare options by value, effort, pros, and cons]
+  I --> J{UX or interface in scope?}
+  J -->|Yes| K[Find friction and define the simplest usable experience]
+  J -->|No| L[Make the smallest complete deliverable]
+  K --> L
+  L --> M[Validate to the category and risk]
+  M --> N{Active security testing?}
+  N -->|No| O[Use proportionate defensive checks]
+  N -->|Yes| P{Ownership and scope confirmed?}
+  P -->|Yes| Q[Run authorized, scoped tests]
+  P -->|No| R[Stop active testing; ask for authorization]
+  O --> S{Continue the project?}
+  Q --> S
+  R --> S
+  S -->|Yes| E
+  S -->|No| T[Report decisions, checks, risks, and next step]
+~~~
+
+## Try the demo
+
+A no-build interactive preview is in [docs/index.html](docs/index.html). It lets a visitor choose a project category and depth, then shows the matching work path.
+
+To publish it with GitHub Pages, open **Settings → Pages**, select **Deploy from a branch**, then choose branch <code>main</code> and folder <code>/docs</code>. The expected URL is <https://sahibsingh.github.io/Project-Flow/> after Pages finishes its first deployment.
+
+The demo is static HTML, CSS, and JavaScript. It has no external dependencies and sends no form data.
+
 ## What it does
 
 - Frames the user's problem, audience, outcome, constraints, and success signal.
