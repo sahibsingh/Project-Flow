@@ -6,13 +6,11 @@ Project Flow helps an agent understand a new or active project, select a useful 
 
 ## Install
 
-Requirements: Node.js 22.20 or later. Install the skill globally for Codex, Claude Code, and Qwen Code with one command:
+Requires Node.js 22.20+. At the prompts, select `project-flow` and the agents you want to install it for.
 
 ```sh
-npx skills add sahibsingh/project-flow --skill project-flow --agent codex --agent claude-code --agent qwen-code --global
+npx skills add sahibsingh/project-flow -g
 ```
-
-The installer writes the skill to each agent's supported global skill directory. Review the repository and the installer prompt before confirming. To install for a single agent, keep the same command and remove the other `--agent` arguments.
 
 ## Start a project
 
