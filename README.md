@@ -68,6 +68,19 @@ See [SECURITY.md](SECURITY.md). Project Flow gives defensive process guidance; i
 
 ## References
 
+### Skill and integration source repositories
+
+- **Product/business analysis:** [OpenAI product-business-analysis skill](https://github.com/openai/plugins/tree/main/plugins/data-analytics/skills/product-business-analysis)
+- **Mobbin UI references:** [best-practices skill](https://github.com/mobbin/skills/tree/main/skills/best-practices), [redesign-screen skill](https://github.com/mobbin/skills/tree/main/skills/redesign-screen), and the [official Mobbin MCP server](https://github.com/mobbin/mobbin-mcp-server)
+- **Frontend design:** [Impeccable](https://github.com/pbakaus/impeccable)
+- **User-facing writing:** [Humanizer](https://github.com/blader/humanizer)
+- **Minimal code changes:** [Ponytail](https://github.com/DietrichGebert/ponytail)
+- **Authorized website crawling:** [Scrapling official skill](https://github.com/D4Vinci/Scrapling/tree/main/agent-skill/Scrapling-Skill)
+
+These are upstream references only. Project Flow does not bundle or install these skills; availability and setup depend on the agent and its integrations.
+
+### Standards and tooling
+
 - [Agent Skills specification](https://agentskills.io/specification)
 - [Skills CLI](https://github.com/vercel-labs/skills)
 - [Supported agents and install paths](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)
