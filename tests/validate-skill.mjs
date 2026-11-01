@@ -21,6 +21,7 @@ for (const file of [
   'skills/project-flow/SKILL.md',
   'skills/project-flow/references/categories.md',
   'skills/project-flow/references/research-and-design.md',
+  'skills/project-flow/references/website-seo.md',
   'skills/project-flow/references/delivery-and-security.md',
 ]) {
   const text = readFileSync(path.join(root, file), 'utf8');
@@ -32,3 +33,4 @@ for (const file of [
 }
 
 console.log('Project Flow skill metadata and local links are valid.');
+

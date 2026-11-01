@@ -2,7 +2,7 @@
 
 A category-aware project skill for Codex, Claude Code, Qwen Code, and other agents that support the shared Agent Skills format.
 
-Project Flow helps an agent understand a new or active project, select a useful depth, research current category trends, compare feature choices, improve UX and UI where relevant, and plan proportionate quality and security checks. It routes optional local skills only when they fit the task.
+Project Flow helps an agent understand a new or active project, select a useful depth, research current category trends, compare feature choices, improve UX and UI where relevant, diagnose SEO gaps for search-led websites, and plan proportionate quality and security checks. It routes optional local skills only when they fit the task.
 
 ## Install
 
@@ -20,33 +20,7 @@ The skill has three depth lanes: Quick for one low-risk outcome, Standard for se
 
 ## Workflow
 
-~~~mermaid
-flowchart TD
-  A[New or active project] --> B[Understand user, problem, outcome, and current stage]
-  B --> C{New project?}
-  C -->|Yes| D[Choose a primary category and optional secondary]
-  C -->|No| E[Resume current decisions and stage]
-  D --> F[Scale depth by scope, dependencies, and risk]
-  E --> F
-  F --> G[Load only relevant skills and tools]
-  G --> H[Research current trends when they could change a decision]
-  H --> I[Compare options by value, effort, pros, and cons]
-  I --> J{UX or interface in scope?}
-  J -->|Yes| K[Find friction and define the simplest usable experience]
-  J -->|No| L[Make the smallest complete deliverable]
-  K --> L
-  L --> M[Validate to the category and risk]
-  M --> N{Active security testing?}
-  N -->|No| O[Use proportionate defensive checks]
-  N -->|Yes| P{Ownership and scope confirmed?}
-  P -->|Yes| Q[Run authorized, scoped tests]
-  P -->|No| R[Stop active testing; ask for authorization]
-  O --> S{Continue the project?}
-  Q --> S
-  R --> S
-  S -->|Yes| E
-  S -->|No| T[Report decisions, checks, risks, and next step]
-~~~
+![Project Flow workflow: start or resume, frame the project, research and choose, optionally audit SEO for a search-led website, design and deliver, validate, then continue or close with findings.](docs/workflow.svg)
 
 ## Try the demo
 
@@ -60,6 +34,7 @@ The demo is static HTML, CSS, and JavaScript. It has no external dependencies an
 
 - Frames the user's problem, audience, outcome, constraints, and success signal.
 - Checks current category trends for new project decisions and reports useful findings with sources, not raw scrape lists.
+- For public websites that depend on search acquisition, diagnoses the path from indexability and search clicks to qualified leads or conversions. See [the website SEO workflow](skills/project-flow/references/website-seo.md).
 - Compares features by value, effort, risk, pros, and cons.
 - Finds user-flow friction and defines the simplest usable UI when design is in scope.
 - Continues an active project from its current stage instead of restarting.
@@ -67,7 +42,7 @@ The demo is static HTML, CSS, and JavaScript. It has no external dependencies an
 
 ## Skills and integrations
 
-The workflow is self-contained. If the agent has relevant local skills, it can route to product/business analysis for metric-backed decisions, Mobbin for a specific screen redesign, Impeccable for frontend design, Humanizer for user-facing prose, or Ponytail for minimal code changes. Missing integrations use a clearly labeled manual fallback. The repository does not copy or install those skills.
+The workflow is self-contained. If the agent has relevant local skills, it can route to product/business analysis for metric-backed decisions, Mobbin for a specific screen redesign, Impeccable for frontend design, Humanizer for user-facing prose, Ponytail for minimal code changes, or Scrapling for an authorized, policy-permitted site crawl. Missing integrations use a clearly labeled manual fallback. The repository does not copy or install those skills.
 
 ## Validate this package
 
@@ -94,3 +69,4 @@ See [SECURITY.md](SECURITY.md). Project Flow gives defensive process guidance; i
 - [Agent Skills specification](https://agentskills.io/specification)
 - [Skills CLI](https://github.com/vercel-labs/skills)
 - [Supported agents and install paths](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)
+
