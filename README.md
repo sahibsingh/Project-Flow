@@ -2,7 +2,7 @@
 
 A category-aware project skill for Codex, Claude Code, Qwen Code, and other agents that support the shared Agent Skills format.
 
-Project Flow helps an agent understand a new or active project, select a useful depth, research current category trends, compare feature choices, improve UX and UI where relevant, diagnose SEO gaps for search-led websites, and plan proportionate quality and security checks. It routes optional local skills only when they fit the task.
+Project Flow helps an agent understand a new or active project, select a useful depth, research current category trends, compare feature choices, improve UX and UI where relevant, and research, map, and implement SEO improvements for public websites when organic search can drive growth. It plans proportionate quality and security checks and routes optional local skills only when they fit the task.
 
 ## Install
 
@@ -20,7 +20,7 @@ The skill has three depth lanes: Quick for one low-risk outcome, Standard for se
 
 ## Workflow
 
-![Project Flow workflow: start or resume, frame the project, research and choose, optionally audit SEO for a search-led website, design and deliver, validate, then continue or close with findings.](docs/workflow.svg)
+![Project Flow workflow: start or resume, frame the project, research and choose, map search phrases to page titles and copy when relevant, design and deliver, validate, then continue or close with findings.](docs/workflow.svg)
 
 ## Try the demo
 
@@ -34,7 +34,7 @@ The demo is static HTML, CSS, and JavaScript. It has no external dependencies an
 
 - Frames the user's problem, audience, outcome, constraints, and success signal.
 - Checks current category trends for new project decisions and reports useful findings with sources, not raw scrape lists.
-- For public websites that depend on search acquisition, diagnoses the path from indexability and search clicks to qualified leads or conversions. See [the website SEO workflow](skills/project-flow/references/website-seo.md).
+- For relevant public websites, maps real search intent to pages, applies prioritized title, content, metadata, and technical changes, then checks the path from search discovery to qualified leads. See [the website SEO workflow](skills/project-flow/references/website-seo.md).
 - Compares features by value, effort, risk, pros, and cons.
 - Finds user-flow friction and defines the simplest usable UI when design is in scope.
 - Continues an active project from its current stage instead of restarting.

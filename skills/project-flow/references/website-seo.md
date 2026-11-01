@@ -2,7 +2,7 @@
 
 ## When to use this reference
 
-Use this workflow when a public website is expected to attract customers, qualified leads, readers, or local visitors from organic search. Skip it for private tools, internal apps, and projects where search is not a meaningful acquisition path. Keep the work short for a small site or a narrow decision.
+For a public business or content website, include a quick SEO baseline unless the user excludes SEO or search is clearly irrelevant. Expand this workflow when organic discovery is a meaningful way to attract customers, qualified leads, readers, or local visitors. Skip it for private tools and internal apps. Keep the crawl and implementation proportional to the project scope.
 
 ## Start with the business path
 
@@ -21,13 +21,36 @@ Diagnose the leak at the right step:
 
 Separate measured facts from hypotheses. If conversion tracking is absent, call the issue a hypothesis and name the smallest measurement needed.
 
-## Research and audit
+## Research, crawl, and audit
 
-1. **Check current search intent.** Use Search Console queries, native web search, first-party sources, or an already connected licensed provider. Inspect a small set of relevant result pages manually when useful, and note date, locale, device, and query. Do not automate queries or scrape Google/Bing result pages to track rankings.
-2. **Review crawl and index signals.** On an owned or authorized site, inspect allowed URLs from the sitemap and a bounded sample. Check HTTP status, redirects, canonical and noindex signals, robots directives, sitemap consistency, internal links, and whether important rendered content is available. A robots.txt rule controls crawler access; it is not a privacy or de-indexing control.
-3. **Review page usefulness.** Check page titles, main headings, descriptive links, image text alternatives, search-intent fit, duplicate or thin pages, evidence and trust, and whether structured data matches visible page content. Do not recommend keyword stuffing, doorway pages, fake markup, or mass-generated pages.
-4. **Check experience and conversion.** For the pages that matter, review mobile usability, Core Web Vitals data when available, accessible content, offer clarity, and the next action. Treat performance numbers as observations; do not promise that one fix will raise rankings or revenue.
-5. **Consider AI search surfaces only with current evidence.** Recheck official search-platform documentation during the project. As checked on 2026-11-01, Google's documentation says its AI Overviews and AI Mode use the same SEO fundamentals and do not require extra files or special markup. Do not sell speculative AI SEO tactics as requirements.
+1. **Set the market and goal.** Identify audience, geography, language, offer, conversion event, and the date range. Find the live site from the repository or deployment links. If the project has no live site yet, inspect its routes, page content, and metadata locally; do not invent a public target.
+2. **Find real query themes.** Start with Search Console queries and landing-page data when connected. Otherwise use a connected licensed keyword provider, permitted market sources, or limited manual search research. Record source, date, locale, intent, and any reported volume. Never invent search volume or automate/scrape search-result pages for rank tracking.
+3. **Inspect the project and crawl the site.** Review route/page templates and existing copy in the repository. For a live owned or authorized site, inspect allowed sitemap URLs and a bounded sample. Check status, redirects, canonical and noindex signals, robots directives, sitemap consistency, internal links, and rendered content. A robots.txt rule controls crawler access; it is not a privacy or de-indexing control.
+4. **Review page usefulness.** Check page titles, meta descriptions, main headings, descriptive links, image text alternatives, search-intent fit, duplicate or thin pages, evidence and trust, and whether structured data matches visible page content. Do not recommend keyword stuffing, doorway pages, fake markup, or mass-generated pages.
+5. **Check experience and conversion.** For priority pages, review mobile use, Core Web Vitals data when available, accessible content, offer clarity, calls to action, and form friction. Treat performance numbers as observations; do not promise that one fix will raise rankings or revenue.
+6. **Consider AI search only with current evidence.** Recheck official search-platform documentation during the project. As checked on 2026-11-01, Google's documentation says its AI Overviews and AI Mode use the same SEO fundamentals and do not require extra files or special markup. Do not sell speculative AI SEO tactics as requirements.
+
+## Map search intent to pages and implement
+
+When the user asks to build, redesign, or improve the website, produce a keyword-to-page map and implement its highest-value changes in the project. For planning-only requests, return the map and proposed edits without changing files.
+
+For each priority page, record:
+
+| Page | Search intent | Primary phrase | Supporting phrases/questions | Evidence, source, date, locale | Recommended title | Description and H1 | Content/internal-link change | Success measure |
+|---|---|---|---|---|---|---|---|---|
+
+Use actual query data when available. If it is not, mark phrase choices as research hypotheses and do not attach made-up volumes. Avoid mapping the same intent to multiple pages without a reason; check for cannibalization before creating a new page.
+
+Implement changes using the site's existing framework and content model:
+
+- Add unique, descriptive, concise page titles and accurate, page-specific meta descriptions. Search engines may rewrite title links and snippets; do not promise exact display or force an arbitrary character limit.
+- Align the visible H1 and page sections with the real user intent. Add related phrases naturally where they improve the explanation; never stuff keywords.
+- Improve internal links and descriptive anchor text. Add accurate image alternatives when images convey information.
+- Fix supported technical issues such as incorrect canonical targets, accidental noindex, broken redirects, missing sitemap entries, or inaccessible rendered text. Do not change robots or canonical rules without checking the intended indexing behavior.
+- Add structured data only when the page is eligible and the markup matches visible, verified content. Never invent ratings, prices, locations, credentials, or product claims.
+- Use the project's existing build, lint, and relevant page checks after edits. Confirm titles, descriptions, canonical/index directives, sitemap coverage, and rendered text on the changed routes.
+
+If a material fact needed for public copy is missing, leave that copy unchanged and ask for the fact instead of making one up.
 
 ## Safe and proportionate crawling
 
@@ -57,6 +80,8 @@ Recheck these sources at the start of a material SEO decision; platform guidance
 - [Google Search Essentials](https://developers.google.com/search/docs/essentials)
 - [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 - [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features)
+- [Title links in search](https://developers.google.com/search/docs/appearance/title-link)
+- [Search snippets and meta descriptions](https://developers.google.com/search/docs/appearance/snippet)
 - [Search Console Performance report](https://support.google.com/webmasters/answer/7576553)
 - [Robots.txt introduction](https://developers.google.com/search/docs/crawling-indexing/robots/intro)
 - [Sitemaps overview](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview)

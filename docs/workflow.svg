@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="840" viewBox="0 0 1440 840" role="img" aria-labelledby="title description">
   <title id="title">Project Flow workflow</title>
-  <desc id="description">A project workflow that starts with a new or active project, frames its outcome and risk, researches and chooses, adds an SEO audit when search drives website leads, designs and delivers, validates, then continues at the current stage or closes with a report. Active security testing requires confirmed authorization and scope.</desc>
+  <desc id="description">A project workflow that starts with a new or active project, frames its outcome and risk, researches and chooses, maps search phrases to website titles and content when relevant, designs and delivers, validates, then continues at the current stage or closes with a report. Active security testing requires confirmed authorization and scope.</desc>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
       <path d="M0 0 8 4 0 8Z" fill="#8CA0A5"/>
@@ -88,7 +88,8 @@
     <circle cx="559" cy="540" r="4" fill="#75B8FF"/>
     <text x="576" y="546" fill="#DCE7E8" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="16.5">
       <tspan x="576">Search-led website?</tspan>
-      <tspan x="576" dy="22">Add SEO: index → leads</tspan>
+      <tspan x="576" dy="22">SEO: map search phrases</tspan>
+      <tspan x="576" dy="21">Edit titles + page copy</tspan>
     </text>
   </g>
 

@@ -16,7 +16,7 @@ People using Codex, Claude Code, Qwen Code, or another compatible agent to plan 
 
 ## Product Purpose
 
-Project Flow guides a project from understanding and category selection through relevant research, feature decisions, UX/UI, delivery, and risk-sized validation. The demo should help visitors understand that path and preview it for a selected category and depth.
+Project Flow guides a project from understanding and category selection through relevant research, feature decisions, UX/UI, delivery, and risk-sized validation. For public business sites, it can map organic search intent to prioritized page changes. The demo should help visitors understand that path and preview it for a selected category and depth.
 
 ## Positioning
 
@@ -43,5 +43,7 @@ The source of truth is `skills/project-flow/SKILL.md` and its linked reference f
 - Understand the project before selecting a workflow.
 - Keep small, low-risk work concise.
 - Use current evidence when it could change a decision.
+- Map real search intent to page changes when SEO is in scope.
 - Route only relevant skills and tools.
 - Match validation depth to project risk and authorization.
+

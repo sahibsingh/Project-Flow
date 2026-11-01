@@ -28,3 +28,5 @@ For category-specific research and interface design, read [research-and-design.m
 
 For a public website whose organic visibility or search-led leads matter, read [website-seo.md](website-seo.md). Skip it for private tools or projects with no search-acquisition goal.
 
+For a public business or content site, include a quick SEO baseline unless the user excludes search or SEO. Expand to query research and a bounded crawl when organic search is a real growth channel.
+
