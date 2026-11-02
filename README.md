@@ -1,87 +1,93 @@
 # Project Flow
 
-A category-aware project skill for Codex, Claude Code, Qwen Code, and other agents that support the shared Agent Skills format.
+One workflow for every project, for Claude Code and Codex. It sizes the project first, runs only the phases that size needs, and names exactly which skill or plugin to use in each phase, so a small project stays cheap and a big one gets the full checks.
 
-Project Flow helps an agent understand a new or active project, select a useful depth, research current category trends, compare feature choices, improve UX and UI where relevant, and research, map, and implement SEO improvements for public websites when organic search can drive growth. It plans proportionate quality and security checks and routes optional local skills only when they fit the task.
+## The flow
+
+```mermaid
+flowchart TD
+    A([Project idea or ongoing work]) --> B{Step 0: size}
+    B -->|S: one page, script, small fix| S1[1. Understand: 2-line brief]
+    B -->|M: app or site, few flows| P1
+    B -->|L: logins, payments, personal data, launch| P1
+
+    S1 --> S5{Has a screen?}
+    S5 -->|yes| S5a[5. UI]
+    S5 -->|no| S6
+    S5a --> S6[6. Build: code + one self-check]
+    S6 --> S7[7. Quick checks: tests or hand check]
+    S7 --> Z([Done])
+
+    P1[1. Understand: brainstorm, 5-line brief] --> P2[2. R&D: features, pros and cons, now / later / no]
+    P2 --> P3[3. Trends: 3-7 trends with date and source]
+    P3 --> P4[4. UX: pain points and main journey]
+    P4 --> P5[5. UI: one design skill, one main action per screen]
+    P5 --> P6[6. Build: plan, TDD, smallest change]
+    P6 --> P7[7. Test and security]
+    P7 --> P8[8. Deploy and monitor: free or self-hosted]
+    P8 --> Z
+
+    P7 -.L only.-> L1[Security audit, fix, verify + ZAP on own staging]
+```
+
+S runs all its phases in one turn. M and L run one phase per turn; say "continue" to move on. Every reply starts with the size, the phase and the skill used.
+
+## Phases and what each one uses
+
+| # | Phase | Size | Skills and tools | You get |
+|---|---|---|---|---|
+| 0 | Size | all | none | S, M or L, in one line |
+| 1 | Understand | all | `superpowers:brainstorming` (M, L) | 2-line (S) or 5-line brief |
+| 2 | R&D | M, L | `product-management:product-brainstorming`, `write-spec` | feature table: value, effort, pros, cons, now / later / no |
+| 3 | Trends | M, L | web search, `deep-research` (L), `competitive-brief`, `scrapling-official` (public pages only), `rea` (free static analysis) | 3-7 trends with date and source, no raw lists |
+| 4 | UX | M, L | `ux-researcher-designer`, `design:ux-copy` | pain points, main journey, the fix for each |
+| 5 | UI | screen only | ONE of `hallmark`, `design-taste-frontend`, `impeccable`, `frontend-design`; `design:accessibility-review` (M, L) | screens, one main action each, accessibility notes |
+| 6 | Build | all | `writing-plans`, `test-driven-development`, `systematic-debugging`, ponytail mode, `copywriting` + `humanizer`, `claude-seo` | working code |
+| 7 | Test and security | all | S: tests or hand check. M: `code-review`, `security-review`, eslint, vitest, semgrep, npm audit, lighthouse. L: `ateam-security-audit` audit, fix, verify, Playwright, OWASP ZAP baseline | findings and fixes |
+| 8 | Deploy | M, L | `engineering:deploy-checklist`, Docker, Coolify, self-hosted Sentry or PostHog | deploy, rollback and monitoring plan |
+
+## Rules the flow always follows
+
+- **Free only.** No paid API, paid tier or credit-spending connector: no Together AI images, no DataForSEO, Semrush, Firecrawl or Mobbin, no Hopper or IDA Pro. If unsure whether something costs money, it is skipped.
+- **Costs the project itself needs** (payment gateway fees, a domain, live keys) are your decision. The agent names the cost, builds in test mode, and never signs up or pays.
+- **Missing tool?** The agent names it, says why and that it is free, and asks. On your yes it reviews the code (licence, install scripts, hooks, network calls, paid parts), installs it and continues. On a no it uses the fallback.
+- **Scraping:** public pages only, robots.txt respected, no personal data, never a Cloudflare or anti-bot bypass.
+- **Security tests** only on code and systems you own, and only after you confirm the target.
+- **One design skill per project**, so design rules never clash.
+- Replies come in your language (Hinglish if you write Hinglish).
 
 ## Install
 
-Requires Node.js 22.20+. At the prompts, select `project-flow` and the agents you want to install it for.
+Clone once, then copy the skill folder to each agent:
 
 ```sh
-npx skills add sahibsingh/project-flow -g
+git clone https://github.com/sahibsingh/Project-Flow.git
+cp -r Project-Flow/skills/project-flow ~/.claude/skills/   # Claude Code
+cp -r Project-Flow/skills/project-flow ~/.agents/skills/   # Codex
 ```
 
-## Start a project
+The flow names skills from plugins such as superpowers, product-management, design, engineering, ateam-security-audit, hallmark, impeccable, humanizer, claude-seo and rea. A skill that is not installed is skipped and the phase's work is done directly; the agent says which skill was missing.
 
-Invoke `project-flow` or describe the project. The skill summarizes its understanding, asks for a primary category when one has not been chosen, then follows the current project stage. Categories are Product/Software, UX/UI, Business/Market, Data/Analytics, Content/Marketing, Research/Docs, Operations/Automation, Creative/Media, and Other. A secondary category can be added for work that crosses areas.
+## Use it
 
-The skill has three depth lanes: Quick for one low-risk outcome, Standard for several flows or integrations, and High assurance for sensitive, regulated, production, or security-sensitive work. It keeps small tasks short and does not load every reference or integration at once.
+Claude Code:
 
-## Workflow
+```
+/project-flow <one line: what the project is>
+```
 
-![Project Flow workflow: start or resume, frame the project, research and choose, map search phrases to page titles and copy when relevant, design and deliver, validate, then continue or close with findings.](docs/workflow.svg)
+Codex: `Use the project-flow skill. Project: <one line>`
 
-When design work can benefit from Mobbin, follow this route: read Mobbin's best-practices guidance first; go straight to a redesign for one named screen, flow, section, or component; search or compare first only when references are a separate requested step, then carry inspected apps and Mobbin links into the redesign. Split whole-product or clone requests into specific targets. If an explicitly requested Mobbin step is unavailable, report the actual connection or tool error and stop that step instead of substituting web search or memory. General UX work can continue with project evidence and a clearly labeled manual review.
+Ready-to-paste prompts and how to split work between Claude Code and Codex: [skills/project-flow/references/prompts.md](skills/project-flow/references/prompts.md).
 
-## Try the demo
-
-A no-build interactive preview is in [docs/index.html](docs/index.html). It lets a visitor choose a project category and depth, then shows the matching work path.
-
-To publish it with GitHub Pages, open **Settings → Pages**, select **Deploy from a branch**, then choose branch <code>main</code> and folder <code>/docs</code>. The expected URL is <https://sahibsingh.github.io/Project-Flow/> after Pages finishes its first deployment.
-
-The demo is static HTML, CSS, and JavaScript. It has no external dependencies and sends no form data.
-
-## What it does
-
-- Frames the user's problem, audience, outcome, constraints, and success signal.
-- Checks current category trends for new project decisions and reports useful findings with sources, not raw scrape lists.
-- For relevant public websites, maps real search intent to pages, applies prioritized title, content, metadata, and technical changes, then checks the path from search discovery to qualified leads. See [the website SEO workflow](skills/project-flow/references/website-seo.md).
-- Compares features by value, effort, risk, pros, and cons.
-- Finds user-flow friction and defines the simplest usable UI when design is in scope.
-- Continues an active project from its current stage instead of restarting.
-- Defines project-sized validation and defensive security checks. It does not promise that software can be made impossible to compromise.
-
-## Skills and integrations
-
-The workflow is self-contained. If the agent has relevant local skills, it can route to product/business analysis for metric-backed decisions, Mobbin for a specific screen redesign, Impeccable for frontend design, Humanizer for user-facing prose, Ponytail for minimal code changes, or Scrapling for an authorized, policy-permitted site crawl. Use Mobbin only when its capabilities are available and appropriate; this repository documents the routing but does not copy or install those skills. For general UX work, a missing integration can use a clearly labeled manual fallback.
-
-## Validate this package
+## Check the package
 
 ```sh
 node tests/validate-skill.mjs
 ```
 
-The check uses Node.js built-ins and validates the skill metadata and local Markdown links. The public installer command can also discover the skill without installing it:
-
-```sh
-npx skills add sahibsingh/project-flow --list
-```
+It checks the skill's metadata, that all eight phases and the free-only rule are present, and that local links work.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
-
-## Security
-
-See [SECURITY.md](SECURITY.md). Project Flow gives defensive process guidance; it is not a security guarantee or an authorization to test third-party systems.
-
-## References
-
-### Skill and integration source repositories
-
-- **Product/business analysis:** [OpenAI product-business-analysis skill](https://github.com/openai/plugins/tree/main/plugins/data-analytics/skills/product-business-analysis)
-- **Mobbin UI references:** [best-practices skill](https://github.com/mobbin/skills/tree/main/skills/best-practices), [redesign-screen skill](https://github.com/mobbin/skills/tree/main/skills/redesign-screen), and the [official Mobbin MCP server](https://github.com/mobbin/mobbin-mcp-server)
-- **Frontend design:** [Impeccable](https://github.com/pbakaus/impeccable)
-- **User-facing writing:** [Humanizer](https://github.com/blader/humanizer)
-- **Minimal code changes:** [Ponytail](https://github.com/DietrichGebert/ponytail)
-- **Authorized website crawling:** [Scrapling official skill](https://github.com/D4Vinci/Scrapling/tree/main/agent-skill/Scrapling-Skill)
-
-These are upstream references only. Project Flow does not bundle or install these skills; availability and setup depend on the agent and its integrations.
-
-### Standards and tooling
-
-- [Agent Skills specification](https://agentskills.io/specification)
-- [Skills CLI](https://github.com/vercel-labs/skills)
-- [Supported agents and install paths](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)
-
+MIT. See [LICENSE](LICENSE). Security: [SECURITY.md](SECURITY.md).

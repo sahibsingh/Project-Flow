@@ -16,13 +16,14 @@ assert.equal(name, 'project-flow');
 assert.ok(/^[a-z0-9-]{1,64}$/.test(name), 'skill name must follow the shared format');
 assert.ok(description && description.length <= 1024, 'description must be present and within the format limit');
 
+for (let n = 1; n <= 8; n++) assert.ok(source.includes(`**${n}. `), `SKILL.md is missing phase ${n}`);
+assert.ok(source.includes('Free paths only'), 'SKILL.md must keep the free-only rule');
+assert.ok(source.includes('Confirm the target before any active test'), 'SKILL.md must keep the security target rule');
+
 for (const file of [
   'README.md',
   'skills/project-flow/SKILL.md',
-  'skills/project-flow/references/categories.md',
-  'skills/project-flow/references/research-and-design.md',
-  'skills/project-flow/references/website-seo.md',
-  'skills/project-flow/references/delivery-and-security.md',
+  'skills/project-flow/references/prompts.md',
 ]) {
   const text = readFileSync(path.join(root, file), 'utf8');
   for (const [, href] of text.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
@@ -32,5 +33,4 @@ for (const file of [
   }
 }
 
-console.log('Project Flow skill metadata and local links are valid.');
-
+console.log('Project Flow skill metadata, phases, rules and local links are valid.');
